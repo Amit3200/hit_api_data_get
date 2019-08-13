@@ -1,0 +1,51 @@
+body {
+    background: #dee2e6;
+}
+
+.btn {
+    background: #ffffff;
+}
+
+.card {
+    margin: 10px;
+    margin-bottom: 20px;
+}
+
+nav {
+    margin-top: -10px;
+    margin-bottom: 35px;
+}
+
+.btn-a {
+    padding: 14px 20px;
+    text-decoration: none;
+    color: #2dce89;
+}
+
+.btn-a:hover {
+    color: #ffffff;
+}
+
+.card2 {
+    margin-top: 50px;
+}
+
+.card2_dio {
+    margin-top: 50px;
+}
+
+p {
+    font-weight: 600;
+}
+
+.card2_dio p {
+    text-transform: capitalize;
+}
+
+.fbtn {
+    color: #2dce89;
+}
+
+.fbtn:hover {
+    color: #ffffff;
+}
