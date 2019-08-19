@@ -1,3 +1,4 @@
+#amit3200 : Airflow health checkup and restart processes if failed and notify through mail.
 import os
 import subprocess as sp
 import time
@@ -15,16 +16,7 @@ class AirflowHealth:
         out=sp.Popen("ps -ef | grep scheduler",stdout=sp.PIPE,stderr=sp.STDOUT,shell=True)
         stdout,stderr=out.communicate()
         stdout=str(stdout)[2:]
-        stdout=stdout.split('\\n')
-        for i in range(len(stdout)):
-            if "grep" not in stdout[i] and "scheduler" in stdout[i]:
-                self.scheduler_logs[i+1]=stdout[i]
-
-        #for i in self.scheduler_logs.keys():
-        #    print(i,self.scheduler_logs[i],'\n')
-
-
-        if len(self.scheduler_logs.keys())>0:
+        if "scheduler" in stdout and stdout.count('scheduler')>2:
             self.scheduler_status=True
         else:
             self.scheduler_status=False
@@ -36,18 +28,11 @@ class AirflowHealth:
         out=sp.Popen("ps -ef | grep webserver",stdout=sp.PIPE,stderr=sp.STDOUT,shell=True)
         stdout,stderr=out.communicate()
         stdout=str(stdout)[2:]
-        stdout=stdout.split('\\n')
-        for i in range(len(stdout)):
-            if "gunicorn" in stdout[i] and "airflow-webserver" in stdout[i]:
-                self.webserver_logs[i+1]=stdout[i]
-
-        #for i in self.webserver_logs.keys():
-        #    print(i,self.webserver_logs[i],'\n')
-
-        if len(self.webserver_logs.keys())>0:
+        if "gunicorn" in stdout and "airflow-webserver" in stdout:
             self.webserver_status=True
         else:
             self.webserver_status=False
+
         print("WebServer [Status] - ",self.webserver_status)
         return self.webserver_status
 
