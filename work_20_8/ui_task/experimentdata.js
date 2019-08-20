@@ -1,11 +1,13 @@
 var idx_json;
-var api_address='https://api.myjson.com/bins/e7r0z';
+var api_address = 'https://api.myjson.com/bins/e7r0z';
 // var theUrl='';change below and add the post here
-var obj_size=0;
+var obj_size = 0;
+
 function isUrl(s) {
     var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
     return regexp.test(s);
 }
+
 function check_null(s) {
     if (s === null || s == undefined || s.lenght <= 1 || s == '' || s == ' ')
         return "None";
@@ -19,7 +21,7 @@ function hide_div() {
 
 function get_name() {
     // var api_address = document.getElementById("api_address").value;
-    document.getElementById("showdatabtn").disabled=true;
+    document.getElementById("showdatabtn").disabled = true;
     if (isUrl(api_address)) {
         var request = new XMLHttpRequest();
         var card2list = document.createElement("div");
@@ -38,7 +40,7 @@ function get_name() {
                     ele.setAttribute('id', 'btnform' + s.toString());
                     ele.setAttribute('onclick', 'show_and_get(' + s.toString() + ')');
                     s += 1;
-                    obj_size+=1;
+                    obj_size += 1;
                     cardbody.appendChild(ele);
                 });
             }
@@ -50,8 +52,8 @@ function get_name() {
 }
 
 function show_and_get(idxid) {
-    for(var i=0;i<obj_size;i++){
-        document.getElementById('btnform'+i.toString()).disabled=true;
+    for (var i = 0; i < obj_size; i++) {
+        document.getElementById('btnform' + i.toString()).disabled = true;
     }
     idx_json = Number(idxid);
     var ele_to_show = document.getElementById('card2_data');
@@ -71,7 +73,49 @@ function show_and_get(idxid) {
                 collection.databaseName = check_null(collection.databaseName);
                 collection.enabled = check_null(collection.enabled);
                 collection.name = check_null(collection.name);
-                collection.onFailure = check_null(collection.onFailure);
+                //failure start
+                try {
+                    collection.Failure.attachmentRequired = check_null(collection.onSuccess.attachmentRequired);
+                    collection.Failure.bodyTitle = check_null(collection.onSuccess.bodyTitle);
+                    collection.Failure.daap = check_null(collection.onSuccess.daap);
+                    collection.Failure.dynamicBodyText = check_null(collection.onSuccess.dynamicBodyText);
+                    collection.Failure.mailEntity.mailAddress.fromAddress = check_null(collection.onSuccess.mailEntity.mailAddress.fromAddress);
+                    collection.Failure.mailEntity.mailAddress.fromName = check_null(collection.onSuccess.mailEntity.mailAddress.fromName);
+                    collection.Failure.mailEntity.mailAddress.bccAddress = check_null(collection.onSuccess.mailEntity.mailAddress.bccAddress);
+                    collection.Failure.mailEntity.mailAddress.ccAddress = check_null(collection.onSuccess.mailEntity.mailAddress.ccAddress);
+                    collection.Failure.mailEntity.mailAddress.replytoAddress = check_null(collection.onSuccess.mailEntity.mailAddress.replytoAddress);
+                    collection.Failure.mailEntity.mailAddress.toAddress = check_null(collection.onSuccess.mailEntity.mailAddress.toAddress);
+                    collection.Failure.mailEntity.mailContent.attachType = check_null(collection.onSuccess.mailEntity.mailContent.attachType);
+                    collection.Failure.mailEntity.mailContent.attachment = check_null(collection.onSuccess.mailEntity.mailContent.attachment);
+                    collection.Failure.mailEntity.mailContent.body = check_null(collection.onSuccess.mailEntity.mailContent.body);
+                    collection.Failure.mailEntity.mailContent.customAttachement = check_null(collection.onSuccess.mailEntity.mailContent.customAttachement);
+                    collection.Failure.mailEntity.mailContent.file = check_null(collection.onSuccess.mailEntity.mailContent.file);
+                    collection.Failure.mailEntity.mailContent.fileName = check_null(collection.onSuccess.mailEntity.mailContent.fileName);
+                    collection.Failure.mailEntity.mailContent.subject = check_null(collection.onSuccess.mailEntity.mailContent.subject);
+                    collection.Failure.mailEntity.product = check_null(collection.onSuccess.mailEntity.product);
+                    collection.Failure.tableRequired = check_null(collection.onSuccess.tableRequired);
+                } catch (err) {
+                    // collection.Failure.attachmentRequired = check_null(null);
+                    // collection.Failure.bodyTitle = check_null(null);
+                    // collection.Failure.daap = check_null(null);
+                    // collection.Failure.dynamicBodyText = check_null(null);
+                    // collection.Failure.mailEntity.mailAddress.fromAddress = check_null(null);
+                    // collection.Failure.mailEntity.mailAddress.fromName = check_null(null);
+                    // collection.Failure.mailEntity.mailAddress.bccAddress = check_null(null);
+                    // collection.Failure.mailEntity.mailAddress.ccAddress = check_null(null);
+                    // collection.Failure.mailEntity.mailAddress.replytoAddress = check_null(null);
+                    // collection.Failure.mailEntity.mailAddress.toAddress = check_null(null);
+                    // collection.Failure.mailEntity.mailContent.attachType = check_null(null);
+                    // collection.Failure.mailEntity.mailContent.attachment = check_null(null);
+                    // collection.Failure.mailEntity.mailContent.body = check_null(null);
+                    // collection.Failure.mailEntity.mailContent.customAttachement = check_null(null);
+                    // collection.Failure.mailEntity.mailContent.file = check_null(null);
+                    // collection.Failure.mailEntity.mailContent.fileName = check_null(null);
+                    // collection.Failure.mailEntity.mailContent.subject = check_null(null);
+                    // collection.Failure.mailEntity.product = check_null(null);
+                    // collection.Failure.tableRequired = check_null(null);                     
+                }
+                // failure end
                 collection.onSuccess.attachmentRequired = check_null(collection.onSuccess.attachmentRequired);
                 collection.onSuccess.bodyTitle = check_null(collection.onSuccess.bodyTitle);
                 collection.onSuccess.daap = check_null(collection.onSuccess.daap);
@@ -98,7 +142,49 @@ function show_and_get(idxid) {
                 document.getElementById('databaseName').value = (collection.databaseName).toString();
                 document.getElementById('enabled').value = (collection.enabled).toString();
                 document.getElementById('name').value = (collection.name).toString();
-                document.getElementById('onFailure').value = (collection.onFailure).toString();
+                // ONFAILURE
+                try {
+                    document.getElementById('fattachmentRequired').value = (collection.onFailure.attachmentRequired).toString();
+                    document.getElementById('fbodyTitle').value = (collection.onFailure.bodyTitle).toString();
+                    document.getElementById('fdaap').value = (collection.onFailure.daap).toString();
+                    document.getElementById('fdynamicBodyText').value = (collection.onFailure.dynamicBodyText).toString();
+                    document.getElementById('ffromAddress').value = (collection.onFailure.mailEntity.mailAddress.fromAddress).toString();
+                    document.getElementById('ffromName').value = (collection.onFailure.mailEntity.mailAddress.fromName).toString();
+                    document.getElementById('fbccAddress').value = (collection.onFailure.mailEntity.mailAddress.bccAddress).toString();
+                    document.getElementById('fccAddress').value = (collection.onFailure.mailEntity.mailAddress.ccAddress).toString();
+                    document.getElementById('freplytoAddress').value = (collection.onFailure.mailEntity.mailAddress.replytoAddress).toString();
+                    document.getElementById('ftoAddress').value = (collection.onFailure.mailEntity.mailAddress.toAddress).toString();
+                    document.getElementById('fattachType').value = (collection.onFailure.mailEntity.mailContent.attachType).toString();
+                    document.getElementById('fattachment').value = (collection.onFailure.mailEntity.mailContent.attachment).toString();
+                    document.getElementById('fbody').value = (collection.onFailure.mailEntity.mailContent.body).toString();
+                    document.getElementById('fcustomAttachement').value = (collection.onFailure.mailEntity.mailContent.customAttachement).toString();
+                    document.getElementById('ffile').value = (collection.onFailure.mailEntity.mailContent.file).toString();
+                    document.getElementById('ffileName').value = (collection.onFailure.mailEntity.mailContent.fileName).toString();
+                    document.getElementById('fsubject').value = (collection.onFailure.mailEntity.mailContent.subject).toString();
+                    document.getElementById('fproduct').value = (collection.onFailure.mailEntity.product).toString();
+                    document.getElementById('ftableRequired').value = (collection.onFailure.tableRequired).toString();
+                } catch (err) {
+                    document.getElementById('fattachmentRequired').value = "None";
+                    document.getElementById('fbodyTitle').value = "None";
+                    document.getElementById('fdaap').value = "None";
+                    document.getElementById('fdynamicBodyText').value = "None";
+                    document.getElementById('ffromAddress').value = "None";
+                    document.getElementById('ffromName').value = "None";
+                    document.getElementById('fbccAddress').value = "None";
+                    document.getElementById('fccAddress').value = "None";
+                    document.getElementById('freplytoAddress').value = "None";
+                    document.getElementById('ftoAddress').value = "None";
+                    document.getElementById('fattachType').value = "None";
+                    document.getElementById('fattachment').value = "None";
+                    document.getElementById('fbody').value = "None";
+                    document.getElementById('fcustomAttachement').value = "None";
+                    document.getElementById('ffile').value = "None";
+                    document.getElementById('ffileName').value = "None";
+                    document.getElementById('fsubject').value = "None";
+                    document.getElementById('fproduct').value = "None";
+                    document.getElementById('ftableRequired').value = "None";
+                }
+                //OffFAILURE
                 document.getElementById('attachmentRequired').value = (collection.onSuccess.attachmentRequired).toString();
                 document.getElementById('bodyTitle').value = (collection.onSuccess.bodyTitle).toString();
                 document.getElementById('daap').value = (collection.onSuccess.daap).toString();
@@ -138,7 +224,25 @@ function submitform() {
     var databaseName = document.getElementById('databaseName').value
     var enabled = document.getElementById('enabled').value
     var name = document.getElementById('name').value
-    var onFailure = document.getElementById('onFailure').value
+    var fattachementRequired = document.getElementById('fattachmentRequired').value
+    var fbodyTitle = document.getElementById('fbodyTitle').value
+    var fdaap = document.getElementById('fdaap').value
+    var fdynamicBodyText = document.getElementById('fdynamicBodyText').value
+    var ffromAddress = document.getElementById('ffromAddress').value
+    var ffromName = document.getElementById('ffromName').value
+    var fbccAddress = document.getElementById('fbccAddress').value
+    var fccAddress = document.getElementById('fccAddress').value
+    var freplytoAddress = document.getElementById('freplytoAddress').value
+    var ftoAddress = document.getElementById('ftoAddress').value
+    var fattachType = document.getElementById('fattachType').value
+    var fattachment = document.getElementById('fattachment').value
+    var fbody = document.getElementById('fbody').value
+    var fcustomAttachment = document.getElementById('fcustomAttachement').value
+    var ffile = document.getElementById('ffile').value
+    var ffileName = document.getElementById('ffileName').value
+    var fsubject = document.getElementById('fsubject').value
+    var fproduct = document.getElementById('fproduct').value
+    var ftableRequired = document.getElementById('ftableRequired').value
     var attachementRequired = document.getElementById('attachmentRequired').value
     var bodyTitle = document.getElementById('bodyTitle').value
     var daap = document.getElementById('daap').value
@@ -167,7 +271,33 @@ function submitform() {
         "databaseName": databaseName,
         "enabled": enabled,
         "name": name,
-        "onFailure": {},
+        "onFailure": {
+            "attachementRequired": fattachementRequired,
+            "bodyTitle": fbodyTitle,
+            "daap": fdaap,
+            "dynamicBodyText": fdynamicBodyText,
+            "mailEntity": {
+                "mailAddress": {
+                    "fromAddress": ffromAddress,
+                    "fromName": ffromName,
+                    "bccAddress": fbccAddress,
+                    "ccAddress": fccAddress,
+                    "replytoAddress": freplytoAddress,
+                    "toAddress": ftoAddress,
+                },
+                "mailContent": {
+                    "attachType": fattachType,
+                    "attachment": fattachment,
+                    "body": fbody,
+                    "customAttachement": fcustomAttachment,
+                    "file": ffile,
+                    "fileName": ffileName,
+                    "subject": fsubject,
+                },
+                "product": fproduct,
+            },
+            "tableRequired": ftableRequired,
+        },
         "onSuccess": {
             "attachementRequired": attachementRequired,
             "bodyTitle": bodyTitle,
@@ -190,8 +320,8 @@ function submitform() {
                     "file": file,
                     "fileName": fileName,
                     "subject": subject,
-                    "product": product,
                 },
+                "product": product,
             },
             "tableRequired": tableRequired,
         },
