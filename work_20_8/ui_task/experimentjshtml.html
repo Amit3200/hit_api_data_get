@@ -28,10 +28,11 @@
         .card_dio {
             padding: 30px;
         }
-        .showdnd{
-            font-size: 0.4rem;
-            float:right;
-            position: absolute;
+
+        .showdnd {
+            font-size: 0.1rem;
+            float: right;
+            position: fixed;
             right: 0px;
             bottom: 0px;
         }
@@ -41,7 +42,7 @@
 <body onload="hide_div()">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="/">Title of Project</a>
+            <a class="navbar-brand" href="index.html">Title of Project</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-primary"
                 aria-controls="navbar-primary" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -83,8 +84,11 @@
                         <h6 class="text-primary text-uppercase">Show Data</h6>
                         <p class="description mt-3">Click the below button to view the data returned from the response
                         </p>
-                        <button type="button" onclick="get_name()" id="showdatabtn" class="btn btn-lg btn-outline-success">Show
+                        <button type="button" onclick="get_name()" id="showdatabtn"
+                            class="btn btn-lg btn-outline-success">Show
                             Data</button>
+                        <a href="createEntry.html" id="createObj" class="btn btn-lg btn-outline-primary">Create
+                            Entry</a>
                     </div>
                 </div>
             </div>
@@ -103,7 +107,27 @@
                             <p>Database Name : <input class="form-control" id="databaseName"><br></p>
                             <p>Enabled : <input class="form-control" id="enabled"><br></p>
                             <p>Name : <input class="form-control" id="name"><br></p>
-                            <p>On Failure : <input class="form-control" id="onFailure"><br></p>
+                            <h1 class="display-4">On Failure Events</h1>
+                            <p>Attachment Required : <input class="form-control" id="fattachmentRequired"><br></p>
+                            <p>Body Title : <input class="form-control" id="fbodyTitle"><br></p>
+                            <p>Daap : <input class="form-control" id="fdaap"><br></p>
+                            <p>Dynamic Body Test : <input class="form-control" id="fdynamicBodyText"><br></p>
+                            <p>Mail From Address : <input class="form-control" id="ffromAddress"><br></p>
+                            <p>Mail From Name : <input class="form-control" id="ffromName"><br></p>
+                            <p>Mail BCC Address : <input class="form-control" id="fbccAddress"><br></p>
+                            <p>Mail CC Address : <input class="form-control" id="fccAddress"><br></p>
+                            <p>Mail Reply to Address : <input class="form-control" id="freplytoAddress"><br></p>
+                            <p>Mail To Address : <input class="form-control" id="ftoAddress"><br></p>
+                            <p>Mail Attach Type : <input class="form-control" id="fattachType"></p>
+                            <p><br>Mail Attachment : <input class="form-control" id="fattachment"><br></p>
+                            <p>Mail Body : <input class="form-control" id="fbody"><br></p>
+                            <p>Mail Custom Attachment : <input class="form-control" id="fcustomAttachement"><br></p>
+                            <p>Mail File : <input class="form-control" id="ffile"><br></p>
+                            <p>Mail File Name : <input class="form-control" id="ffileName"><br></p>
+                            <p>Mail Subject : <input class="form-control" id="fsubject"><br></p>
+                            <p>Product : <input class="form-control" id="fproduct"><br></p>
+                            <p>Table Required : <input class="form-control" id="ftableRequired"><br></p>
+                            <h1 class="display-4">On Success Events</h1>
                             <p>Attachment Required : <input class="form-control" id="attachmentRequired"><br></p>
                             <p>Body Title : <input class="form-control" id="bodyTitle"><br></p>
                             <p>Daap : <input class="form-control" id="daap"><br></p>
@@ -123,8 +147,9 @@
                             <p>Mail Subject : <input class="form-control" id="subject"><br></p>
                             <p>Product : <input class="form-control" id="product"><br></p>
                             <p>Table Required : <input class="form-control" id="tableRequired"><br></p>
-                            <p>Schedule : <input class="form-control" id="schedule"><br></p><button
-                                class="btn btn-lg btn-success fbtn" type="submit" onclick="submitform()">Submit</button>
+                            <p>Schedule : <input class="form-control" id="schedule"><br></p>
+                            <button class="btn btn-lg btn-success fbtn" type="submit"
+                                onclick="submitform()">Submit</button>
                         </div>
                     </div>
                 </div>
@@ -133,4 +158,5 @@
     </div>
     <pre class="pulls-right showdnd">Amit3200</pre>
 </body>
+
 </html>
