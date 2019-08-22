@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="../static/assets/css/styledata.css" rel="stylesheet">
+    <!-- Icons -->
+    <link href="../static/assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+    <link href="../static/assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Theme CSS -->
+    <link type="text/css" href="../static/assets/css/argon.min.css" rel="stylesheet">
+    <!-- Core -->
+    <script src="../static/assets/js/createData.js"></script>
+    <script src="../static/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../static/assets/vendor/popper/popper.min.js"></script>
+    <script src="../static/assets/vendor/bootstrap/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <!-- Theme JS -->
+    <script src="../static/assets/js/argon.min.js"></script>
+    <style>
+        #dataBaseNameSource{
+            width: 50%;
+            align-content: center;
+            margin: 0 auto;
+            font-weight: 700;
+        }
+        .container{
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <select id="dataBaseNameSource" class="form-control">
+        <option class="optsDrag" value="Mysql">Mysql</option>
+        <option class="optsDrag" value="OpenSDB">OpenSDB</option>
+        <option class="optsDrag" value="Oracle">Oracle</option>
+        <option class="optsDrag" value="Influx">Influx</option>
+    </select>
+</div>
+</body>
+</html>
